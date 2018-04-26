@@ -1,0 +1,68 @@
+version: "2"
+services:
+  auth_system:
+    depends_on:
+     - dt-redis
+    container_name: auth_app
+    build: ./auth-system
+    image: auth
+    ports:
+      - "9010:9010"
+    networks:
+      main:
+        aliases:
+          - auth
+  provider:
+    depends_on:
+     - pr-redis
+     - auth_system
+    container_name: provider_app
+    build: ./provider
+    image: provider
+    ports:
+      - "9009:9009"
+    networks:
+      main:
+        aliases:
+          - provider
+  client:
+    depends_on:
+     - auth_system
+     - provider
+    container_name: client_app
+    build: ./client
+    image: client
+    networks:
+      main:
+        aliases:
+          - client
+  pr-redis:
+    container_name: pr-redis
+    image: redis
+    ports:
+      - "6378:6379"
+    volumes:
+      - ../data/redis:/data
+    entrypoint: redis-server --appendonly yes
+    restart: always
+    networks:
+      main:
+        aliases:
+          - prredis
+  dt-redis:
+    container_name: dt-redis
+    image: redis
+    ports:
+      - "6377:6379"
+    volumes:
+      - ../data/redis:/data
+    entrypoint: redis-server --appendonly yes
+    restart: always
+    networks:
+      main:
+        aliases:
+          - dtredis  
+
+networks:
+  main:
+    driver: bridge

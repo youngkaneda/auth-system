@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>client</groupId>
+    <artifactId>client</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.196</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/h2-1.4.196.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>xmlrpc-helma</groupId>
+            <artifactId>xmlrpc-helma</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/xmlrpc-helma-1.0.jar</systemPath>
+        </dependency>
+        <dependency> 
+            <groupId>xerces</groupId> 
+            <artifactId>xerces</artifactId> 
+            <version>1.4.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/xerces-1.4.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/json-20180130.jar</systemPath>
+        </dependency>       
+    </dependencies>
+</project>
